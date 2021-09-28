@@ -5,8 +5,9 @@
 /* checkbox */
 .checkbox-wrapper {
     position: relative;
-    padding-left: 20px;
     display: inline-block;
+    margin-right: $spacing-16;
+    padding-left: $spacing-24;
     input[type=checkbox] {
         top: 2px;
         left: 0;
