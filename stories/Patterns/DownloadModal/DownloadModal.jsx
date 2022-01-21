@@ -20,32 +20,32 @@ export const Category_options = {
 };
 
 export const DownloadModal = ({
-  data, button, select, content, ...args
+  data, button, select, modalbtn, content, Image, Category, ...props
 }) => {
   useEffect(() => {
-    checkbox('.checkbox input', '.download-footer .button-primary');
+    checkbox('.form-check input', '.download-footer .button-primary');
     selectFilter();
     modal();
   }, []);
-  let image_variant = Image_options[`${args.Image}`];
-  let category_variant = Category_options[`${args.Category}`];
+  let image_variant = Image_options[`${Image}`];
+  let category_variant = Category_options[`${Category}`];
   return (
     <>
-      {content === '' && <CtaButton label="Modal" data-toggle="modal" data-target-modal="#exampleModal" />}
-      <div className={cls('modal', `${image_variant}`)} role="dialog" aria-labelledby="modal" aria-modal="true">
+      {content === '' && <CtaButton label={modalbtn} data-toggle="modal" data-target-modal="#downloadModal" />}
+      <div className={cls('modal', `${image_variant}`)} role="dialog" aria-label="modal" aria-modal="true" {...props}>
         <div className="modal-content">
-          <a href="javascript:void(0)" className="modal-close-button" aria-label="close" />
+          <button type="button" class="modal-close-button" data-dismiss="modal" aria-label="Close">Close</button>
           <div className="download-body">
-            {args.Image === 'True' && (
+            {Image === 'True' && (
             <div className="show-large">
               <Publicationthumb Hovercolors="yellow" />
             </div>
             )}
             <div className="download-content">
-              {args.Category === 'Multiplelanguages' && <CustomSelect text={select} />}
-              <div className={['download-list', `${category_variant}`].join(' ')}>
+              {Category === 'Multiplelanguages' && <CustomSelect text={select} />}
+              <div className={cls('download-list', 'scrollbar-vertical', `${category_variant}`)}>
                 {data.map((item, index) => (
-                  <DownloadRow title={item.title} subtitle={item.subtitle} datalang={item.datalang} key={index} value={index} />
+                  <DownloadRow title={item.title} subtitle={item.subtitle} dataValue={item.dataValue} key={index} value={index} />
                 ))}
               </div>
             </div>

@@ -3,22 +3,14 @@
 @import '../../../assets/scss/breakpoints';
 
 /* country card start */
-.country {
-  @include devicebreak(small) {
-    &card__items {
-      .glide__slides {
-        flex-flow: unset;
-      }
-    }
-  }
-}
-
 .country-card {
   &--item {
+    overflow: hidden;
+
     @include devicebreak(medium) {
       margin-top: $spacing-96;
 
-      &.glide__slide {
+      &.swiper-slide {
         a {
           @include transition(all 0.4s);
           @include transform(translateY(0));
@@ -55,21 +47,18 @@
         }
 
         .cta__link {
-          &::after {
-            @include translate(10px, 0);
-
-            background-image: url(#{$img-path-Icon}/arrow-left-expand-hover.svg);
-            width: 100px;
+          i {
+            width: $spacing-80;
           }
         }
       }
     }
 
     @include devicebreak(small) {
-      &.glide__slide {
+      &.swiper-slide {
         height: auto;
 
-        &--active {
+        &-active {
           a::before {
             opacity: 1;
           }
@@ -84,15 +73,6 @@
                   opacity: 1;
                 }
               }
-            }
-          }
-
-          .cta__link {
-            &::after {
-              @include translate(10px, 0);
-
-              background-image: url(#{$img-path-Icon}/arrow-left-expand-hover.svg);
-              width: 100px;
             }
           }
         }
@@ -166,7 +146,7 @@
 [dir='rtl'] {
   .country-card--item {
     &:hover,
-    &.glide__slide--active {
+    &.swiper-slide-active {
       .cta--arrow::after {
         @include transform(translate(0, 0) rotate(180deg));
 

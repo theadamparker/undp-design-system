@@ -19,6 +19,11 @@ export const getCaptionForLocale = (locale) => {
       control: { type: "inline-radio" },
       defaultValue: 'Expanding arrow'
     },
+    Tag_Type: {
+      options: ['link', 'span'],
+      control: { type: 'inline-radio' },
+      defaultValue: 'link'
+    },
   }}
 />
 
@@ -69,6 +74,9 @@ A cta link is a prompt on a website that tells the user to take some specified a
 >
   {(args, { globals: { locale } }) => {
     const caption = getCaptionForLocale(locale);
+    // replace key
+    args['button_option'] = args['Tag_Type'];
+    delete args['Tag_Type'];
     return (
       <Ctalink
         label={caption.detail1}

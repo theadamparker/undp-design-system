@@ -1,7 +1,6 @@
 import './undp';
 
 class Select {
-
   constructor(element) {
     this.$window = $(window);
     this.$currentSelect = $(element);
@@ -48,7 +47,7 @@ class Select {
   }
 
   setSelectOptionListener() {
-    const $options = $('.select-box li');
+    const $options = this.$currentSelect.find('.option');
 
     $options.click((ev) => {
       ev.stopImmediatePropagation();
@@ -57,8 +56,10 @@ class Select {
       this.value = ev.currentTarget.dataset.value;
 
       this.close();
+      this.changeSelectedOption();
     });
   }
+
 
   close() {
     this.$selectOptions.removeClass(this.activeClass);
@@ -99,6 +100,8 @@ class Select {
         this.$selectOptions[0].scrollTop = element.offsetTop;
       }
     }
+
+    this.changeSelectedOption();
   }
 
   defocusItem(element) {
@@ -142,17 +145,13 @@ class Select {
   }
 }
 
-
 export function select() {
   $('.select-box li').on('click', function(){
     $(this).parent().siblings().text($(this).find('span').text());
   });
-
   const selects = $('[data-select]');
   selects.each((i, select) => {
     const selectInstance = new Select(select);
     selectInstance.init();
   });
 }
-
-

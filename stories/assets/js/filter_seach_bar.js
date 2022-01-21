@@ -1,17 +1,23 @@
+const selectCount = [];
 const toggleFilter = function () {
   const searchOption = $('.multi-select li input');
   const chipsWrapper = $('.search-filter .selected-chips');
 
-  $('.multi-select').on('click', function (e) {
-    $(this).toggleClass('open');
+  $(".multi-select").each(function( index ) { 
+    const numberOfCheck = $(this).find('input:checkbox:checked').length;
+    if(numberOfCheck > 0){
+      $(this).find('button').first().find('span').remove();
+      $(this).find('button').first().append('<span> (' + numberOfCheck + ') </span>');
+    }
   });
-
-  $(searchOption).on('click', function () {
+  
+  $(searchOption).on('click', function (e) {
+    e.stopImmediatePropagation();
     const el = $(this);
     const currentChipsWrapper = el.parents('.select-wrapper').find('.selected-chips');
     const eleId = el.attr('id');
     const numberOfChecked = $(this).parents('.multi-select').find('input:checkbox:checked').length;
-    const filterButton = $(this).parents('ul').siblings();
+    const filterButton = $(this).parents('ul').not('.sub-menu').siblings();
     if(numberOfChecked > 0){
       filterButton.find('span').remove();
       filterButton.append('<span> (' + numberOfChecked + ') </span>');
@@ -53,7 +59,7 @@ const toggleFilter = function () {
     const findId = $(this).parents('.select-wrapper').find(`#${id}`);
     findId.prop('checked', false);
     const inputCount = findId.parents('.multi-select').find('input:checkbox:checked').length;
-    const currentInputCount = findId.parents('ul').siblings();
+    const currentInputCount = findId.parents('ul').not('.sub-menu').siblings();
     if(inputCount > 0){
       currentInputCount.find('span').remove();
       currentInputCount.append('<span> (' + inputCount + ') </span>');

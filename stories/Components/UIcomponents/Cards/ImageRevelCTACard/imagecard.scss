@@ -25,7 +25,7 @@
 
     h5 {
       margin-bottom: 0;
-      padding: $spacing-32 0 0;
+      padding: $spacing-32 $spacing-24 0;
 
       @include devicebreak(large) {
         @include translate(0, 100%);
@@ -40,53 +40,37 @@
         position: absolute;
         transition-delay: 0.2s;
         width: 100%;
-        z-index: 1;
-      }
-    }
-    &::after {
-      @include devicebreak(large) {
-        content: '';
-        top: 0;
-        left: 0;
-        opacity: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-        position: absolute;
-        transition: opacity .5s ease;
-        transition-delay: 0.2s;
-      
-        @include background(45deg, #{$color-green}, transparent 75%);
-      }
-    }
-  }
-
-  &:hover {
-    .cta__link::after {
-      @include translate(5px, 0);
-      @include transition(0.2s ease);
-
-      background-image: url(#{$img-path-Iconfourback}/arrow-left-expand-hover.svg);
-      width: 82px;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    @include devicebreak(large) {
-      h5 {
-        height: auto;
-        opacity: 1;
-        transform: translateY(0);
-        z-index: 1;
-      }
-      .image-reveal-card__content::after {
-        opacity: 1;
-        transition-delay: 0;
       }
     }
   }
 
   .cta__link {
-    margin: $spacing-32 0 0 0;
+    margin: $spacing-32 0 0 $spacing-24;
+    width: 100%;
+
+    @include devicebreak(large) {
+      margin-left: $spacing-24;
+    }
+  }
+
+  &:hover {
+    .image-reveal-card__content {
+      @include devicebreak(large) {
+        h5 {
+          height: auto;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .cta__link::after {
+      @include translate(10px, 0);
+      @include transition(0.2s ease);
+
+      background-image: url(#{$img-path-Iconfourback}/arrow-left-expand-hover.svg);
+      width: 100px;
+    }
   }
 }
 
@@ -95,25 +79,51 @@
     max-width: 212px;
 
     .cta__link {
-      margin-left: 0;
+      width: 100%;
     }
   }
 
   h5 {
     font-size: $font-size-16;
   }
+
+  &:hover {
+    @include devicebreak(medium) {
+      .cta__link {
+        &::after {
+          margin-left: 0;
+          width: calc(100% - 115px);
+        }
+      }
+    }
+  }
 }
 
 [dir='rtl'] {
   .image-reveal-card {
-    margin: 0;
-
     .cta__link {
+      margin-right: $spacing-24;
       margin-top: $spacing-32;
 
-      &::after {
+      @include devicebreak(medium) {
+        margin-right: $spacing-24;
+      }
+    }
+
+    &:hover {
+      .cta__link::after {
         @include transform(translate(-10%, 0) rotate(180deg));
         @include transition(0.2s ease);
+      }
+    }
+  }
+
+  .small.image-reveal-card {
+    &:hover {
+      .cta__link::after {
+        @include devicebreak(medium) {
+          margin-right: 0;
+        }
       }
     }
   }

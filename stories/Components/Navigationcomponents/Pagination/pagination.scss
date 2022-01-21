@@ -75,32 +75,33 @@
   .pagination {
     ul {
       padding-right: 0;
+    }
 
-      li {
-        margin-left: $spacing-24;
-        margin-right: 0;
-        padding-right: 0;
+    li {
+      margin-left: $spacing-24;
+      margin-right: 0;
+      padding-right: 0;
 
-        &:first-child {
-          a {
-            &::before {
-              @include transform(rotateZ(180deg));
-            }
+      &:first-child {
+        a {
+          &::before {
+            @include transform(rotateZ(180deg));
           }
         }
+      }
 
+      &:last-child {
+        a {
+          &::before {
+            @include transform(rotateZ(180deg));
+          }
+        }
+      }
+
+      span {
         &:last-child {
-          a {
-            &::before {
-              @include transform(rotateZ(180deg));
-            }
-          }
-        }
-
-        span {
-          &:last-child {
-            margin-right: 0.375rem;
-          }
+          margin-left: 0;
+          margin-right: 0.375rem;
         }
       }
     }

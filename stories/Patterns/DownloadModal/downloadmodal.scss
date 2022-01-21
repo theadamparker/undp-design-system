@@ -36,21 +36,15 @@
   }
 
   &-list {
-    @extend .scrollbar-vertical;
-
     max-height: calc(100% - 82px);
+    padding-right: $spacing-24;
     overflow-y: auto;
-    padding: 0 $spacing-16;
 
     @include devicebreak(medium) {
       max-height: 323px;
     }
 
-    .checkbox-container {
-      @include devicebreak(medium) {
-        margin-right: $spacing-24;
-      }
-
+    .download-row {
       &.hide {
         display: none;
       }
@@ -89,13 +83,15 @@
 [dir='rtl'] {
   .download {
     &-list {
+      padding-left: $spacing-24;
+      padding-right: 0;
+
       @include devicebreak(small) {
         padding-left: $spacing-16;
-        padding-right: 0;
       }
 
       @include devicebreak(medium) {
-        .checkbox-container {
+        .download-row {
           margin-left: $spacing-24;
           margin-right: 0;
         }

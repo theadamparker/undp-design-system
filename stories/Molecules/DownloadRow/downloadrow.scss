@@ -1,6 +1,6 @@
-@import '../../assets/scss/mixins';
-@import '../../assets/scss/variables';
-@import '../../assets/scss/breakpoints';
+@import "../../assets/scss/mixins";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/breakpoints";
 
 .download {
   &-row {
@@ -37,19 +37,10 @@
     .external-link {
       margin: $spacing-16 0 1.188rem $spacing-16;
     }
-
-    .checkbox {
-      margin-right: -0.375rem;
-      padding-bottom: 1.25rem;
-    }
-
-    a {
-      @extend %img_none;
-    }
   }
 }
 
-[dir='rtl'] {
+[dir="rtl"] {
   .download {
     &-row {
       &__data {
