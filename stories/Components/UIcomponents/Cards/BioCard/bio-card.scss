@@ -1,0 +1,176 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/mixins';
+@import '../../../../assets/scss/base';
+
+/* bio card start */
+div.bio-card {
+  a {
+    display: block;
+    background: $color-gray-200; 
+    @include transition(0.2s ease);
+    
+    &:hover {
+      .cta--arrow {
+        i {
+          width: $spacing-80;
+          &::before {
+            display: unset;
+          }
+        }
+      }
+
+      .card-thumbnail__image::before {
+        opacity: 0.75;
+        @include background-image(42deg, $color-yellow, transparent 80%);
+      }
+    }
+  }
+
+  // color map
+  $colors: ('yellow': $color-yellow, 'red': $color-red, 'green': $color-green, 'blue': $color-azure);
+
+  @each $name, $color in $colors {
+    &.#{$name} {
+        a {
+          .card-thumbnail__image::before {
+          @include background-image(42deg, #{$color}, transparent 80%);
+        }
+      }
+    }
+  }
+
+  .bio-card__content {
+    background: $color-gray-100;
+    flex-direction: column;
+    order: 2;
+    position: relative;
+
+    @include devicebreak(medium) {
+      background: none;
+      display: flex;
+      order: inherit;
+    }
+    
+    .bio-card__description {
+      padding: $spacing-32 $spacing-24 0 ;
+    }
+
+    .card-thumbnail__image {
+      order: 1;
+
+      @include devicebreak(medium) {
+        order: inherit;
+      }
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    h5 {
+      margin-bottom: 1.125rem;
+      @include devicebreak(medium) {
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    p {
+      @extend %paragragh-font-16;
+      margin-bottom: 2.063rem;
+
+      @include devicebreak(medium) {
+          margin-bottom: 1.5rem;
+        }
+    }
+
+    .cta__link {
+      margin-bottom: 0;
+      margin-top: $spacing-24;
+      padding: 0  $spacing-24 $spacing-32;
+      @include devicebreak(medium) {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+.modal {
+  visibility: hidden;
+
+  &.open {
+    visibility: visible;
+  }
+}
+
+.bio-card-wrapper {
+  @extend %custom-scrollbar;
+
+  display: block;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-y: auto;
+
+  @include devicebreak(medium) {
+    display: flex;
+  }
+}
+
+.bio-card-image {
+  width: 100%;
+
+  @include devicebreak(medium) {
+    min-width: 338px;
+  }
+
+  img {
+    width: 100%;
+
+    @include devicebreak(medium) {
+      width: auto;
+    }
+  }
+}
+
+.bio-card-content {
+  padding: $spacing-32 $spacing-24;
+
+  @include devicebreak(medium) {
+    padding: 0 $spacing-24 $spacing-32;
+  }
+
+  p {
+    margin-bottom: $spacing-32;
+
+    &.small {
+      @extend %paragragh-font-16;
+    }
+  }
+}
+
+[dir='rtl'] {
+  .bio-card{
+    a:hover  {
+      .cta--arrow::after {
+      @include transform(translate(0, 0) rotate(180deg));
+      }
+    }
+  }
+
+  .bio-card {
+    $colors: ('yellow': $color-yellow, 'red': $color-red, 'green': $color-green, 'azure': $color-azure);
+
+    @each $name, $color in $colors {
+      &.#{$name} {
+        .card-thumbnail__image::before {
+          @include background-image(311deg, #{$color}, transparent 80%);
+        }
+      }
+    }
+    &:hover {
+      .card-thumbnail__image::before {
+        @include background-image(311deg, $color-yellow, transparent 80%);
+      }
+    }
+  } 
+}
+/* bio card end */

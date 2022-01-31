@@ -9,13 +9,30 @@ export function lightbox_Gallery() {
   });
 
   // caption alignment set according image block
-  $(window).load(() => {
-    $('.image-section__description').each(function () {
+  const captionalignment = () => {
+    $('.image__description').each(function () {
+
+      // caption class add
       var gDesHeight = $(this).height();
       var gImgHeight = $(this).siblings('.image').height();
       if (gDesHeight > gImgHeight) {
         $(this).addClass('caption_top');
+      } else {
+        $(this).removeClass('caption_top');
       }
     });
-  });
+
+    // frostedbackground class add
+    $('.lightbox-gallery-images li').click(function(){
+      $('.goverlay, .gloader').remove();
+      $('.gcontainer').addClass('frosted-background');
+    })
+  }
+
+  //function load
+  window.onload = function() {
+  if(document.readyState == 'complete') {
+      captionalignment();
+    }
+  };
 }

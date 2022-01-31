@@ -9,7 +9,7 @@ import { CtaButton } from '../../Components/UIcomponents/Buttons/Cta_button/CtaB
 import { Heading } from '../../Atom/Typography/Heading/Heading';
 import { Menu } from '../../Components/Navigationcomponents/Menu/Menu';
 import viewport from '../../assets/js/viewport';
-import './publicationpage.scss';
+import './publication-page.scss';
 import '../../assets/js/sticky';
 import GlobalHeader from '../../Components/Navigationcomponents/Mainnavigation/GlobalHeader/GlobalHeader';
 
@@ -139,8 +139,7 @@ export const PublicationPage = ({
           <div className="cell small-12 large-6 large-offset-6">
             <div className="column">
               <ContentCardWithOutImage
-                className="card-out"
-                Emphasize="false"
+                Hovercolors='yellow'
                 data={ContentCardWithOutImageData}
               />
             </div>

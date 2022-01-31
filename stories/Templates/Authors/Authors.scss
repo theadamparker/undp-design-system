@@ -1,6 +1,6 @@
-@import '../../assets/scss/variables';
-@import '../../assets/scss/mixins';
-@import '../../assets/scss/breakpoints';
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+@import "../../assets/scss/breakpoints";
 
 .authors-page {
   margin-top: 4.75rem;
@@ -8,35 +8,7 @@
   @include devicebreak(xlarge) {
     margin-top: 7.1875rem;
   }
-
-  @include devicebreak(small) {
-    .author-cards {
-      .cell {
-        &:first-child {
-          .author-card {
-            @include devicebreak(small) {
-              border-top: 0;
-              margin-top: 0;
-            }
-          }
-        }
-      }
-
-      &.find-first-author {
-        .cell {
-          &:first-child {
-            .author-card {
-              @include devicebreak(small) {
-                border-top: 2px solid $color-black;
-                margin-top: $spacing-40;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
+  
   .author__label p {
     font-size: 1rem;
 
@@ -81,6 +53,9 @@
 
       &.author-filter-show {
         display: block;
+        .expand-search{
+          margin: $spacing-24 0;
+        }    
       }
     }
   }
@@ -89,17 +64,17 @@
     display: none;
   }
 
-  .close-btn {
-    display: none;
-
-    &.show-close {
-      display: block;
-    }
-
-    .button {
-      &.button-secondary {
-        background-color: $color-gray-300;
-        color: $color-black;
+  .sort-filter{
+    width:100%;
+    span{
+      display: none;
+      font-size: 1rem;}
+    &.close{
+      font-size: 0;
+      background-color: $color-gray-300;
+      color: $color-black;
+      span{
+        display: block;
       }
     }
   }
@@ -122,26 +97,38 @@
   }
 
   .author-card {
-    border-top: 2px solid $color-black;
-    margin-top: 3.75rem;
-    padding-top: $spacing-24;
+    margin-top: $spacing-76;
 
     @include devicebreak(small) {
-      margin-top: $spacing-48;
+      margin-top: 0;
 
       h6 {
         font-size: $font-size-16;
 
         @include devicebreak(small) {
-          font-size: 0.875rem;
+          h6 {
+            font-size: $font-size-16;
+            @include devicebreak(small) {
+              font-size: 0.875rem;
+            }
+          }
         }
+      }
+    }
+    > div:first-child{
+      a{
+          @include devicebreak(small) {
+            border-top: 0;
+          }  
       }
     }
   }
 
   .view-btn-cell {
-    margin-bottom: 4.1875rem;
-    margin-top: 3.75rem;
+    margin-bottom: 4.188rem;
+    @include devicebreak(medium) {
+      margin-bottom: 13.563rem;
+    }
   }
 
   .select-box {
@@ -161,7 +148,8 @@
   }
 }
 
-[dir='rtl'] {
+// rtl css
+[dir="rtl"] {
   .authors-page {
     .medium-offset-1 {
       @include devicebreak(small) {

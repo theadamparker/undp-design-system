@@ -22,6 +22,15 @@
   animation: $animation;
 }
 
+//keyframe
+@mixin keyframes($keyframes...) {
+  -webkit-keyframes: $keyframes;
+  -moz-keyframes: $keyframes;
+  -ms-keyframes: $keyframes;
+  -o-keyframes: $keyframes;
+  keyframes: $keyframes;
+}
+
 //transition
 @mixin transition($transitions...) {
   -webkit-transition: $transitions;
@@ -131,6 +140,42 @@
   border: none;
 }
 
+%header-icon {
+  background: none;
+  border: 0;
+  display: inline-flex;
+  padding: 0;
+  cursor: pointer;
+}
+
+%frosted-bg {
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  background: rgba(247, 247, 247, 0.8);
+}
+
+%footer-block {
+  align-items: center;
+  border-bottom: 1px solid $color-white;
+  justify-content: space-between;
+  margin-bottom: $spacing-32;
+}
+
+%mobile-nav {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+%button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
 %sidebar {
   align-items: center;
   cursor: pointer;
@@ -163,13 +208,14 @@
   width: 16px;
   border: 2px solid $color-dark-red;
   appearance: none;
+  -webkit-appearance: none;
   margin: 0;
   &:hover {
     border-color: $color-light-pink;
   }
-
   &:focus-visible {
-    outline: $color-blue-500 solid 2px;
+    box-shadow: 0 0 4px $color-blue-800;
+    outline: 0;
   }
 }
 
@@ -196,9 +242,9 @@
 
 %ctaimg {
   content: "";
-  height: 20px;
+  height: 1.188rem;
   margin-left: $spacing-12;
-  width: 13px;
+  width: 0.813rem;
 }
 
 %field__image {
@@ -228,7 +274,7 @@
   float: right;
   height: 13px;
   position: absolute;
-  right: 19px;
+  right: 16px;
   top: 50%;
   width: 20px;
 }
@@ -300,6 +346,10 @@
   min-height: 100px;
   padding: 0 $spacing-16;
   width: 100%;
+  &:focus{
+    outline:0;
+    box-shadow: 0 0 4px $color-blue-800;
+  }
 }
 
 %select_rtl {
@@ -368,6 +418,13 @@
 
   margin: 0 auto;
   max-width: 100%;
+}
+
+%expand_search {
+  border: 0;
+  border-bottom: 1px solid $color-black;
+  border-radius: 0;
+  cursor: pointer;
 }
 
 %carousel_arrow {
@@ -459,6 +516,15 @@
   }
 }
 
+%selectoption {
+  border-top: 1px solid $color-gray-400;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+
+
 //burmese lang
 :lang(my) {
   %carousel_tag {
@@ -533,7 +599,7 @@
     display: block;
     left: 1.25rem;
     height: $spacing-16;
-    @include transition(width 0.5s);
+    @include transition(width 0.3s);
 
     &::before {
       @extend %pseudo-icon;
@@ -542,6 +608,7 @@
       background-color: $color-red;
       right: 0;
       top: 7px;
+      display: none;
     }
 
     &::after {
@@ -559,7 +626,213 @@
   &:hover {
     i {
       width: $spacing-80;
+      &::before {
+        display: unset;
+      }
     }
+  }
+}
+
+@-webkit-keyframes circle-square-transition {
+  0% {
+    opacity: .4;
+    width: $width-100;
+    height: $width-50;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  15% {
+    opacity: .25;
+    width: $width-180;
+    height: $width-150;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  30% {
+    opacity: .5;
+    width: $width-600;
+    height: $width-600;
+    margin-top: - $spacing-330;
+    border-radius: 50%
+  }
+  45% {
+    width: $width-705;
+    height: $width-705;
+    margin-top: - $spacing-330;
+    border-radius: 45%
+  }
+  60% {
+    width: $width-900;
+    height: $width-840;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 80% 80%/0 0 70% 70%
+  }
+  75% {
+    max-width: $width-1096;
+    height: $width-900;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 50% 50%/0 0 20% 20%
+  }
+  to {
+    opacity: 1;
+    border-radius: 0
+  }
+}
+
+@keyframes circle-square-transition {
+  0% {
+    opacity: .4;
+    width: $width-100;
+    height: $width-50;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  15% {
+    opacity: .25;
+    width: $width-180;
+    height: $width-150;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  30% {
+    opacity: .5;
+    width: $width-600;
+    height: $width-600;
+    margin-top: - $spacing-330;
+    border-radius: 50%
+  }
+  45% {
+    width: $width-705;
+    height: $width-705;
+    margin-top: - $spacing-330;
+    border-radius: 45%
+  }
+  60% {
+    width: $width-900;
+    height: $width-840;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 80% 80%/0 0 70% 70%
+  }
+  75% {
+    max-width: $width-1096;
+    height: $width-900;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 50% 50%/0 0 20% 20%
+  }
+  to {
+    opacity: 1;
+    border-radius: 0
+  }
+}
+
+
+@-webkit-keyframes circle-square-transition-back {
+  0% {
+    opacity: 1;
+    border-radius: 0
+  }
+  15% {
+    max-width: $width-1096;
+    height: $width-900;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 50% 50%/0 0 20% 20%
+  }
+  30% {
+    width: $width-900;
+    height: $width-840;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 80% 80%/0 0 70% 70%
+  }
+  45% {
+    width: $width-705;
+    height: $width-705;
+    margin-top: - $spacing-330;
+    border-radius: 45%
+  }
+  60% {
+    opacity: .5;
+    width: $width-600;
+    height: $width-600;
+    margin-top: - $spacing-330;
+    border-radius: 50%
+  }
+  75% {
+    opacity: .25;
+    width: $width-180;
+    height: $width-150;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  to {
+    opacity: .4;
+    width: $width-100;
+    height: $width-50;
+    margin-top: -$spacing-70;
+    border-radius: 50%
+  }
+}
+
+@keyframes circle-square-transition-back {
+  0% {
+    opacity: 1;
+    border-radius: 0
+  }
+  15% {
+    max-width: $width-1096;
+    height: $width-900;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 50% 50%/0 0 20% 20%
+  }
+  30% {
+    width: $width-900;
+    height: $width-840;
+    margin-top: - $spacing-330;
+    border-radius: 0 0 80% 80%/0 0 70% 70%
+  }
+  45% {
+    width: $width-705;
+    height: $width-705;
+    margin-top: - $spacing-330;
+    border-radius: 45%
+  }
+  60% {
+    opacity: .5;
+    width: $width-600;
+    height: $width-600;
+    margin-top: - $spacing-330;
+    border-radius: 50%
+  }
+  75% {
+    opacity: .25;
+    width: $width-180;
+    height: $width-150;
+    margin-top: - $spacing-70;
+    border-radius: 50%
+  }
+  to {
+    opacity: .4;
+    width: $width-100;
+    height: $width-50;
+    margin-top: -$spacing-70;
+    border-radius: 50%
+  }
+}
+
+@-webkit-keyframes transition-opacity {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes transition-opacity {
+  0% {
+    opacity: 0
+  }
+  to {
+    opacity: 1
   }
 }
 /* placehoder end */

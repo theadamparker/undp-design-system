@@ -3,13 +3,13 @@ import { Heading } from '../../../../Atom/Typography/Heading/Heading';
 import { P } from '../../../../Atom/Base-typography/Paragraph/Paragraph';
 import { Ctalink } from '../../Buttons/Cta_link/Cta_link';
 import { parallaxEffect } from '../../../../assets/js/parallax';
-import './parallaxgallery.scss';
+import './parallax-gallery.scss';
 
 export const ParallaxGallery = ({
   titleText, descText, buttonText, galleryimg1, galleryimg2, galleryimg3, galleryimg4, Background,
 }) => {
   useEffect(() => {
-    parallaxEffect('.parallax-gallery-images', 'vertical');
+    parallaxEffect('.parallax-gallery-images', '.column', 'top center', 'bottom+=15% center', 'vertical', 'all');
   }, []);
 
   let background;

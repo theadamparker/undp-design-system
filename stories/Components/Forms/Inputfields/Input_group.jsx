@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './input_group.scss';
+import './input-group.scss';
 
 const cls = (...classes) => ((classes.filter(Boolean).length > 0) ? classes.filter(Boolean).join(' ') : null);
 
@@ -20,7 +20,7 @@ export const Inputcomponent = ({
   }, [state]);
   return (
     <>
-      <div className={cls('input-group', `${state}`)}>
+      <div className={cls('input-group', (`${state}` !== 'focus') ? `${state}` : '')} > 
         {labelText && <label htmlFor={[`${type}`]}>{ labelText }</label>}
         <InputTag
           ref={inputElement}

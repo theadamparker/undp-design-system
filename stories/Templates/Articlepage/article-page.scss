@@ -1,0 +1,130 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
+@import '../../assets/scss/breakpoints';
+
+/* article page start */
+.author-section {
+  border-bottom: 1px solid $color-gray-400;
+  margin-bottom: 5.56rem;
+  padding-top: $spacing-32;
+
+  @include devicebreak(mediumonlytab) {
+    border-top: 2px solid $color-black;
+  }
+}
+
+.mt-h {
+  margin-top: 4.25rem;
+
+  @include devicebreak(medium) {
+    margin-top: 8.9375rem;
+  }
+
+  @include devicebreak(xlarge) {
+    margin-top: 10.75rem;
+  }
+}
+
+.blockq {
+  margin-bottom: 5.625rem;
+  margin-top: 2.82rem;
+
+  @include devicebreak(large) {
+    margin-bottom: 2.5625rem;
+  }
+}
+
+.section-head {
+  margin-top: 2.6875rem;
+}
+
+.image-caption {
+  padding-top: $spacing-32;
+
+  @include devicebreak(mediumonlytab) {
+    .image__caption {
+      border-bottom: 0;
+    }
+  }
+
+  .image__caption {
+    padding-left: 0;
+
+    @include devicebreak(small) {
+      padding-left: $spacing-96;
+    }
+  }
+}
+
+.middle-image {
+  margin-bottom: $spacing-32;
+  margin-top: $spacing-64;
+}
+
+.middle-caption {
+  margin-bottom: 6.375rem;
+}
+
+.list-section {
+  margin-bottom: 11.25rem;
+  margin-top: $spacing-32;
+
+  @include devicebreak(small) {
+    margin-bottom: 3rem;
+  }
+
+  li {
+    margin-top: $spacing-24;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.featured-card-container {
+  margin-bottom: $spacing-32;
+
+  .feature__card {
+    margin-bottom: $spacing-24;
+  }
+}
+
+header {
+  ~ .featured-card-container {
+    > div {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+[dir='rtl'] {
+  @include devicebreak(medium) {
+    .medium-offset-1 {
+      margin-left: 0;
+      margin-right: 8.33333%;
+    }
+
+    .medium-offset-2 {
+      margin-left: 0;
+      margin-right: 16.66667%;
+    }
+  }
+
+  .section-head {
+    text-align: right;
+  }
+
+  .author-wrapper--3 {
+    .author-wrapper__box {
+      &:first-child,
+      &:last-child {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+/* article page end */

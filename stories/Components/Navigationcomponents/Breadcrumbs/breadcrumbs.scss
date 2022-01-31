@@ -41,13 +41,11 @@
       }
 
       a {
-        @extend %border-none;
-        @extend %img_none;
-
         color: $color-dark-red;
         font-size: $font-size-12;
         font-weight: 600;
         text-transform: uppercase;
+        transition: opacity .2s ease;
 
         &:hover {
           color: $color-red;
@@ -66,7 +64,8 @@
         color: $color-white;
 
         &:hover {
-          color: $color-gray-100;
+          color: $color-white;
+          opacity: .7;
         }
       }
     }

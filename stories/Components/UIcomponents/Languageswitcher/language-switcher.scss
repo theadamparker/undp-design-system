@@ -1,0 +1,136 @@
+@import '../../../assets/scss/breakpoints';
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/mixins';
+
+/* language-switcher start */
+.dropdown-language {
+  display: inline-block;
+  position: relative;
+
+  ul {
+    @include transition(0.3s ease-in-out);
+
+    height: 0;
+    left: $spacing-16;
+    top: calc(100% + 3px);
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    z-index: 9;
+
+    li {
+      list-style: none;
+      margin-bottom: 0;
+      padding-left: 0;
+
+      a {
+        @extend %language_switcher;
+
+        background: $color-gray-200;
+        border-bottom: 1px solid $color-gray-400;
+        box-shadow: 0 3px 4px rgb(0 0 0 / 10%);
+        display: block;
+        padding: $spacing-12 $spacing-16;
+      }
+    }
+  }
+
+  &.active {
+    button::after {
+      @include transform(rotateZ(180deg));
+    }
+
+    ul {
+      height: auto;
+    }
+  }
+
+  button {
+    @extend %language_switcher;
+    align-items: center;
+    background-color: transparent;
+    color: $color-blue-600;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+
+    &::before {
+      background-color:$color-blue-600;
+      -webkit-mask: url(#{$img-path-Icon}/Language.svg) no-repeat left center;
+      mask: url(#{$img-path-Icon}/Language.svg) no-repeat left center;
+      content: '';
+      height: 26px;
+      margin-right: $spacing-08;
+      width: 25px;
+
+      @include devicebreak(small) {
+        background:transparent url(#{$img-path-Icon}/Language.svg) no-repeat left center;
+        -webkit-mask: inherit;
+        mask: inherit;
+      }
+    }
+    &::after {
+      @include transition(0.2s ease-in-out);
+      background-color:$color-blue-600;
+      -webkit-mask: url(#{$img-path-Icon}/arrowblue.svg) no-repeat left center;
+      mask: url(#{$img-path-Icon}/arrowblue.svg) no-repeat left center;
+      content: '';
+      height: 10px;
+      margin-left: $spacing-08;
+      width: 15px;
+      @include devicebreak(small) {
+        background:transparent url(#{$img-path-Icon}/arrowblue.svg) no-repeat left center;
+        -webkit-mask: inherit;
+        mask: inherit;
+      }
+    }
+
+    &:hover{
+      color:$color-blue-400;
+      &::before {
+        background-color: $color-blue-400;
+      }
+      &::after {
+        background-color: $color-blue-400;
+      }
+    }
+
+    &.white {
+      color: $color-white;
+
+      &::before {
+        background: url(#{$img-path-Icon}/Language-white.svg) no-repeat left center;
+      }
+
+      &::after {
+        background: url(#{$img-path-Icon}/arrowwhitedown.svg) no-repeat left center;
+      }
+    }
+  }
+}
+
+[dir='rtl'] {
+  .dropdown-language {
+    ul {
+      left: unset;
+      right: 16px;
+      padding-right: 0;
+      li{
+        padding-right: 0;
+      }
+    }
+
+    button::before {
+      margin-left: $spacing-08;
+      margin-right: 0;
+      transform: scaleX(-1);
+    }
+
+    button::after {
+      margin-left: 0;
+      margin-right: $spacing-08;
+    }
+  }
+}
+
+/* language-switcher start */

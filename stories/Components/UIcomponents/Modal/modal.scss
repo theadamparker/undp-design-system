@@ -6,14 +6,13 @@
 .modal {
   @include transition(all 0.4s ease-in-out);
 
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  background: rgba(247, 247, 247, 0.8);
+  @extend %frosted-bg;
   bottom: 0;
   display: flex;
   justify-content: center;
   left: 0;
   opacity: 0;
+  visibility: hidden;
   position: fixed;
   right: 0;
   top: 0;
@@ -26,7 +25,6 @@
   &-content {
     background: $color-white;
     max-width: 837px;
-    overflow-y: auto;
     padding: $spacing-64 $spacing-12 $spacing-12;
     position: relative;
     width: 100%;
@@ -55,6 +53,7 @@
 
   &.open {
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -73,5 +72,4 @@
     }
   }
 }
-
 /* Modal lightbox card end */

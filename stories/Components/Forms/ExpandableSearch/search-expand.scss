@@ -1,0 +1,79 @@
+@import '../../../assets/scss/mixins';
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/breakpoints';
+
+.expand-search {
+  align-items: flex-end;
+  display: flex;
+  position: relative;
+
+  input {
+    @include transition(all 200ms ease-in-out);
+    @extend %expand_search;
+
+    background-color: $color-white;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: $font-size-14;
+    height: 2.675rem;
+    position: relative;
+    width: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.open {
+    input {
+      outline: none;
+      padding-left: 0.8125rem;
+      padding-right: $spacing-24;
+      width: calc(100% - 1.6875rem);
+      z-index: 1;
+    }
+  }
+
+  button {
+    @extend %expand_search;
+    height: 2.625rem;
+    width: 1.6875rem;
+    z-index: 2;
+    background: none;
+    padding:0 0 1px;
+    img{
+      width: 27px;
+    }
+    &.close-button{
+      display: none;
+      position: absolute;
+      right:0;
+      border: 0;
+      &.show{
+        display: block;
+      }
+      img{
+        max-width: 30px;
+      }
+    }
+  }
+}
+
+[dir='rtl'] {
+  .expand-search {
+    .icon-search-black {
+      left: inherit;
+      right: 0;
+    }
+    &.open {
+      input {
+        padding-left: $spacing-24;
+        padding-right: 0.8125rem;
+      }
+    }
+    .close-button{
+      right: inherit;
+      left: 0;
+    }
+  }
+}

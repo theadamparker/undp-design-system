@@ -4,7 +4,7 @@ import Iconsback from '../../../../assets/icons/back.svg';
 import IconsGlobe from '../../../../assets/icons/Globe.svg';
 import IconsLanguage from '../../../../assets/icons/Language.svg';
 import { navigationInitialize } from '../../../../assets/js/navigation';
-import './MobileNav.scss';
+import './mobile-nav.scss';
 
 const MobileNav = ({
   text,
@@ -27,8 +27,8 @@ const MobileNav = ({
             {navigationData.map((item, index) => (
               <li key={index}>
                 <a
-                  className="cta__link cta--arrow"
-                  href="javascript:void(0)"
+                  className="cta__link cta--space"
+                  href="#"
                   id={item.id}
                 >
                   {item.label}
@@ -36,8 +36,8 @@ const MobileNav = ({
               </li>
             ))}
           </ul>
-          <div className="mob-nav-options">
-            <a href="javascript:void(0)" className="mob-lang-switcher">
+          <div className="mobile-nav-options">
+            <a href="#" className="mob-lang-switcher">
               <Icons src={IconsLanguage} alt="icon-language" />
               {' '}
               {languageswitcherData.headerText}
@@ -50,7 +50,7 @@ const MobileNav = ({
           </div>
         </div>
 
-        <div className="cell mob-sub-menu">
+        <div className="cell mobile-sub-menu">
           <button className="back-nav">
             <Icons src={Iconsback} alt="back button" />
             {backcaption.detail}

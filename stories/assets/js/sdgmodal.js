@@ -1,6 +1,6 @@
 // sdg modal open
 export function SdgModal() {
-  const windowTop = window.top;
+  const windowTop = window.top || window;
   const $modalOpen = $('.sdg-card:not(.sdg-card-link)');
 
   // Remove hash in url on modal close
@@ -9,9 +9,11 @@ export function SdgModal() {
   }
 
   // Load modal open with hash
-  $(window).load(() => {
-    var { hash } = windowTop.location;
-    $(`a[href$='${hash}'].sdg-card:not(.sdg-card-link)`).trigger('click');
+  $(window).on("load", function() {
+    var hash = windowTop.location.hash;
+    if (hash.length) {
+      $(`a[href$='${hash}'].sdg-card:not(.sdg-card-link)`).trigger('click');
+    }
   });
 
   // Modal open on sdgcard click
@@ -37,7 +39,7 @@ export function SdgModal() {
   });
 
   // Modal close on close button
-  $('.modal-sdg .close').on('click', () => {
+  $('.modal-sdg .close, .modal-sdg .modal-header').on('click', () => {
     $('.modal-sdg').removeClass('sdg-open');
     $('body').removeClass('sdgmodal-open');
     $($modalOpen).removeAttr('tabindex');

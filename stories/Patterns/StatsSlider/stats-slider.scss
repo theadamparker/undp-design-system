@@ -1,0 +1,98 @@
+@import '../../assets/scss/breakpoints';
+@import '../../assets/scss/variables';
+@import '../../assets/scss/swiper';
+@import '../../assets/scss/mixins';
+
+/* stats-card-grid start */
+.stats-card-slider {
+  overflow-x: hidden;
+
+  @include devicebreak(medium) {
+    .swiper {
+      &-wrapper {
+        display: block;
+      }
+
+      &-slide {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: initial;
+      }
+    }
+  }
+
+  @include devicebreak(small) {
+    .stats-card.small {
+      max-width: 100%;
+      pointer-events: none;
+    }
+
+    .swiper {
+      &-slide-active {
+        .stats-card {
+          background-color: $color-light-yellow;
+
+          h2 {
+            color: $color-black;
+          }
+        }
+      }
+    }
+  }
+
+  .stats-card-parallax {
+    margin-bottom: 2.625rem;
+
+    @include devicebreak(medium) {
+      display: flex;
+      justify-content: center;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .stats-card {
+    @include devicebreak(large) {
+      &.small {
+        box-sizing: border-box;
+        max-width: 330px;
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      background-color: $color-light-yellow;
+    }
+  }
+
+  &.swiper-initialized {
+    @include devicebreak(small) {
+      padding-right: $spacing-64;
+    }
+    .swiper-scrollbar {
+      @include devicebreak(small) {
+        padding-right: $spacing-64;
+      }
+    }
+  }
+}
+
+[dir='rtl'] {
+  .stats-card-slider {
+    &.swiper-initialized {
+      @include devicebreak(small) {
+        padding-left: $spacing-64;
+        padding-right: 0;
+      }
+      .swiper-scrollbar {
+        @include devicebreak(small) {
+          padding-left: $spacing-64;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+/* stats-card-grid end */
