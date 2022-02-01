@@ -176,6 +176,22 @@
   display: block;
 }
 
+%sdg-modal-title {
+  h2 {
+    font-size: $font-size-25;
+    @include devicebreak(medium) {
+      font-size: 3.438rem;
+      padding-left: $spacing-16;
+    }
+  }
+  h3 {
+    font-size: $font-size-20;
+    @include devicebreak(medium) {
+      font-size: 2.188rem;
+    }
+  }
+}
+
 %sidebar {
   align-items: center;
   cursor: pointer;
@@ -245,6 +261,10 @@
   height: 1.188rem;
   margin-left: $spacing-12;
   width: 0.813rem;
+  margin-top: 2px;
+  @include devicebreak(medium) {
+  margin-top: 0;
+  }
 }
 
 %field__image {
@@ -274,7 +294,7 @@
   float: right;
   height: 13px;
   position: absolute;
-  right: 16px;
+  right: 14px;
   top: 50%;
   width: 20px;
 }
