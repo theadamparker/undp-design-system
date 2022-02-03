@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/addon-docs';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { CountryHomepage } from './CountryHomepage';
 import {getCaptionForLocale as footerData} from '../../Organism/Footer/Footer.stories.mdx';
 import {statsArray as statssliderdata} from '../../Patterns/StatsSlider/StatsSlider.stories.mdx';
@@ -395,91 +395,149 @@ export const getCaptionForLocale = (locale) => {
 <Meta title="Templates/Country Homepage"/>
 
 <style>{`
-  .sbdocs-h1 {
-    font-weight: 700;
-  }
-  .subheading {
-    font-weight: 500;
-    font-scale: 22px;
-    color: #161616;
-    letter-spacing: 1.5px;
-    line-height: 24px;
-    margin-bottom: 12px;
-    margin-top: 40px;
-  }
-  .high {
-    font-weight: 500;
-    font-size: 14px;
-    color: #161616;
-    line-height: 24px;
-    margin-bottom: 12px;
-    margin-top: 40px;
-  }
-  .docblock-code-toggle {
-    display: none;
-  }
+  .sbdocs-preview {display: none}
 `}</style>
 
 # Country Homepage 
 
-Country Homepage Template
+A country homepage has all the list of content related to one particular country.
 
-<Story name="Country Homepage" parameters={{
-    layout: "fullscreen"
-  }}>
-  {(args, { globals: { locale } }) => {
-    const caption = getCaptionForLocale(locale);
-    const navigationData= getNavLinks(locale);
-    const leftNavigationData=navigationData.filter(item=>item.position==='left');
-     const rightNavigationData=navigationData.filter(item=>item.position==='right');
-     const siteTitleData = getSiteTitle(locale);
-     console.log(siteTitleData);
-     return <CountryHomepage 
-        herotitle={caption.titlename}
-        headingTop={caption.text}
-        herobtnlabel={caption.btnlabel}
-        herosubtitle={caption.subtitle}
-        heroimgsrc={caption.imgsrc}
-        heroimgalt={caption.imgalt}   
-        featureddata={caption.featureddata}
-        featureddataafterwedo={caption.featureddataafterwedo}
-        headertext={caption.headertext}
-        PagewidecardTag={caption.tag}
-        PagewidecardTitle={caption.label1}
-        PagewidecardParagraph={caption.label2}
-        PagewidecardBtnlabel={caption.pagewidecardbtn}
-        whatwedoheader={caption.whatwedoheader} 
-        whatwedodescription={caption.whatwedodescription}
-        takeactioncard={takeactioncard(locale)}
-        statHeading={caption.statHeading}
-        storiesHeading={caption.storiesHeading}
-        featureddataafterwedo={contentcardimagesdata(locale)}
-        StatsSliderData={statssliderdata(locale)}
-        footerData={footerData(locale)}
-        locale={locale}
-        leftNavigationData={leftNavigationData}
-        navigationData={navigationData}
-        rightNavigationData={rightNavigationData}
-        menuData={menuData(locale)}
-        languageswitcherData={Languageswitcher(locale)}
-        locationData={getLocationDataForLocale(locale)}
-        langSelect={getSelectlanguage(locale)}
-        backcaption={getBackForLocale(locale)}
-        siteTitleData={getSiteTitle(locale)}        
-        logo={logo}
-        logowhite={logowhite}
-        takeAcrtionHead={caption.takeAcrtionHead}
-        storyBtn={caption.storyBtn}
-    ></CountryHomepage>;
-  }}
-</Story>
+### Overview
+A country homepage has a content list related to one specific country. This includes content lists like articles, publications, success stories, blogs, etc.
+Mock Up: https://undp-design-system.azurewebsites.net/country-page
 
-<div className="subheading">Usage</div>
-<ul>
-    <li>Take HTML from the HTML tab in the canvas</li>
-    <u>To use SCSS include the following files in your implementation</u>
-    <li>Include the common SCSS files like breakpoints, variables, mixin from <code>assets/scss</code></li>
-    <li>Component SCSS file: <code>postheader.scss</code></li>
-    <u>To use CSS include the following files in your implementation</u>
-    <li>The compiled CSS file from <code>assets/css/style.css</code></li>
-</ul>
+### Template Structure
+
+The following components are used to create the “Article Page” template in the design system
+
+- Country header
+- Homepage Hero - Homepage Hero images are large sized images with text in front of the image and present at the top of the homepage.
+- Group of featured cards - Featured card groups that will have CTA links (this can be just #).
+- Background image(color) with text
+- Title for success stories
+- Pagewide featured content card
+- Group of content cards
+- Secondary button, no arrow
+- Stats slider - Group of cards arranged horizontally in two rows that slide in from opposite directions on page scroll. 
+- Text title - Take action
+- Group of image reveal cards 
+- Standard footer 
+- Performance
+- The page performance will be optimized by considering the following:
+- Lazy load
+- Use appropriate media renditions based on the client’s viewpoint.
+- Load common/static elements asynchronously (static navigation, menus, countries list, etc)
+- Optimize assets loading - inline important CSS, defer bulky assets calls, preconnect to required origins, etc)
+- Optimize transitions and animations so above-the-fold elements are always loaded first and available for viewers before the rest of the page is processed.
+
+### Usage
+- Copy HTML from the HTML tab of Canvas and include below listed css and js files.
+- Initialize viewport,  navigation, language switcher, accordion, StatsHover, swiper and parallax effect by calling below mentioned functions.
+- viewport();
+- navigationInitialize();
+- langSwitch();
+- accordion('[data-accordion="mobile"]', '.footer-panel', 'active');
+- swiper('.stats-card-slider');
+- parallaxEffect('.stats-card-slider');
+
+#### CSS and JS References
+
+#### CSS:
+
+Add the base layout style from dist/css/base-minimal.css
+
+- dist/css/components/country-site-header.min.css
+- dist/css/components/language-switcher.min.css
+- dist/css/components/menu.min.css
+- dist/css/components/mega-menu.min.css
+- dist/css/components/mobile-nav.min.css
+- dist/css/components/homepage-hero.min.css
+- dist/css/components/breadcrumbs.min.css
+- dist/css/components/headingbig.min.css
+- dist/css/components/content-card.min.css
+- dist/css/components/contentcardwithandwithoutimage.min.css
+- dist/css/components/featured-content-card.min.css
+- dist/css/components/cta-link.min.css
+- dist/css/components/page-wide-card.min.css
+- dist/css/components/image-card.min.css
+- dist/css/components/image-reveal-cards.min.css
+- dist/css/components/stats.min.css
+- dist/css/components/stats-cards.min.css
+- dist/css/components/stats-slider.min.css
+- dist/css/components/footer-logo.min.css
+- dist/css/components/footer-lists.min.css
+- dist/css/components/footer-icons.min.css
+- dist/css/components/footer-condition.min.css
+- dist/css/components/input-group.min.css
+- dist/css/components/buttons.min.css
+- dist/css/components/signup.min.css
+- dist/css/components/accordion.min.css
+- dist/css/components/footer.min.css
+- dist/css/templates/countryhome-page.min.css
+- dist/css/templates/article-page.min.css
+- dist/css/components/swiper.min.css
+
+#### JS:
+- dist/js/navigation.min.js
+- dist/js/undp.min.js
+- dist/js/lang_switcher.min.js
+- dist/js/accordion.min.js
+- dist/js/smoothbgchange.min.js
+- dist/js/swiper.min.js
+- dist/js/parallax.min.js
+- dist/js/viewport.min.js
+
+### Changelog
+1.0 — Released component
+
+<Canvas>
+  <Story name="Country Homepage" parameters={{
+      layout: "fullscreen"
+    }}>
+    {(args, { globals: { locale } }) => {
+      const caption = getCaptionForLocale(locale);
+      const navigationData= getNavLinks(locale);
+      const leftNavigationData=navigationData.filter(item=>item.position==='left');
+      const rightNavigationData=navigationData.filter(item=>item.position==='right');
+      const siteTitleData = getSiteTitle(locale);
+      console.log(siteTitleData);
+      return <CountryHomepage 
+          herotitle={caption.titlename}
+          headingTop={caption.text}
+          herobtnlabel={caption.btnlabel}
+          herosubtitle={caption.subtitle}
+          heroimgsrc={caption.imgsrc}
+          heroimgalt={caption.imgalt}   
+          featureddata={caption.featureddata}
+          featureddataafterwedo={caption.featureddataafterwedo}
+          headertext={caption.headertext}
+          PagewidecardTag={caption.tag}
+          PagewidecardTitle={caption.label1}
+          PagewidecardParagraph={caption.label2}
+          PagewidecardBtnlabel={caption.pagewidecardbtn}
+          whatwedoheader={caption.whatwedoheader} 
+          whatwedodescription={caption.whatwedodescription}
+          takeactioncard={takeactioncard(locale)}
+          statHeading={caption.statHeading}
+          storiesHeading={caption.storiesHeading}
+          featureddataafterwedo={contentcardimagesdata(locale)}
+          StatsSliderData={statssliderdata(locale)}
+          footerData={footerData(locale)}
+          locale={locale}
+          leftNavigationData={leftNavigationData}
+          navigationData={navigationData}
+          rightNavigationData={rightNavigationData}
+          menuData={menuData(locale)}
+          languageswitcherData={Languageswitcher(locale)}
+          locationData={getLocationDataForLocale(locale)}
+          langSelect={getSelectlanguage(locale)}
+          backcaption={getBackForLocale(locale)}
+          siteTitleData={getSiteTitle(locale)}        
+          logo={logo}
+          logowhite={logowhite}
+          takeAcrtionHead={caption.takeAcrtionHead}
+          storyBtn={caption.storyBtn}
+      ></CountryHomepage>;
+    }}
+  </Story>
+</Canvas>

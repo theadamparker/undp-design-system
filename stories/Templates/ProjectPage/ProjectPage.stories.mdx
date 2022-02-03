@@ -1,4 +1,4 @@
-import { Meta, Story } from '@storybook/addon-docs';
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
 import { ProjectPage } from './ProjectPage';
 import {getCaptionForLocale as footerData} from '../../Organism/Footer/Footer.stories.mdx';
 import { getCaptionForLocale as Languageswitcher } from '../../Components/UIcomponents/Languageswitcher/Languageswitcher.stories.mdx';
@@ -51,7 +51,8 @@ export const getCaptionForLocale = (locale) => {
         downloadTitle4: 'Travaux Préparatoires of the negotiations for the elaboration of the United Nations Convention against Corruption', 
         downloadTitle5: 'Technical Guide to the United Nations Convention against Corruption', 
         downloadTitle6: 'United Nations Convention against Corruption (UNCAC)', 
-        download: 'READ MORE',
+        download: 'DOWNLOAD',
+        readmore: 'READ MORE',
         impactHead: "Impact", 
         title1: "STATUS", 
         subtitle1: "Ongoing", 
@@ -284,7 +285,7 @@ export const getCaptionForLocale = (locale) => {
             Hovercolors:'',
           },
         ],
-        storyBtn:'View More',
+        storyBtn:'VIEW MORE',
         listData:[
           {
             text : 'PICs more effectively implement UNCAC and work towards the achievement of SDG 16.'
@@ -330,7 +331,8 @@ export const getCaptionForLocale = (locale) => {
         downloadTitle4: 'الأعمال التحضيرية للمفاوضات بشأن وضع اتفاقية الأمم المتحدة لمكافحة الفساد', 
         downloadTitle5: 'دليل تقني لاتفاقية الأمم المتحدة لمكافحة الفساد', 
         downloadTitle6: 'اتفاقية الأمم المتحدة لمكافحة الفساد', 
-        download: 'اقرأ أكث',
+        download: 'تحميل',
+        readmore: 'اقرأ أكث',
         impactHead: "تأثير", 
         title1: "الحالة", 
         subtitle1: "جاري التنفيذ", 
@@ -609,7 +611,8 @@ export const getCaptionForLocale = (locale) => {
         downloadTitle4: 'Travaux Préparatoires သည် ကုလသမဂ္ဂ အဂတိလိုက်စားမှု ဆန့်ကျင်ရေး ကွန်ဗင်းရှင်းကို အသေးစိတ် ဆွေးနွေးညှိနှိုင်းမှုများ၊', 
         downloadTitle5: 'ကုလသမဂ္ဂ အဂတိလိုက်စားမှု တိုက်ဖျက်ရေး ကွန်ဗင်းရှင်းဆိုင်ရာ နည်းပညာလမ်းညွှန်', 
         downloadTitle6: 'ကုလသမဂ္ဂ အဂတိလိုက်စားမှု ဆန့်ကျင်ရေး သဘောတူစာချုပ် (UNCAC)၊', 
-        download: 'ပိုပြီးဖတ်ပါ',
+        download: 'ဒေါင်းလုဒ်လုပ်ပါ။',
+        readmore: 'ပိုပြီးဖတ်ပါ',
         impactHead: "ထိခိုက်မှု", 
         title1: "အဆင့်အတန်း", 
         subtitle1: "လုပ်ဆောင်ဆဲ", 
@@ -888,7 +891,8 @@ export const getCaptionForLocale = (locale) => {
         downloadTitle4: '腐敗の防止に関する国連条約の精緻化のための交渉の', 
         downloadTitle5: '腐敗の防止に関する国連条約の技術ガイド', 
         downloadTitle6: '腐敗の防止に関する国連条約（UNCAC)', 
-        download: '続きを読む',
+        download: 'ダウンロード',
+        readmore: '続きを読む',
         impactHead: "影響", 
         title1: "状態", 
         subtitle1: "進行中", 
@@ -1167,7 +1171,8 @@ export const getCaptionForLocale = (locale) => {
         downloadTitle4: 'Travaux Préparatoires of the negotiations for the elaboration of the United Nations Convention against Corruption', 
         downloadTitle5: 'Technical Guide to the United Nations Convention against Corruption', 
         downloadTitle6: 'United Nations Convention against Corruption (UNCAC)', 
-        download: 'READ MORE',
+        download: 'DOWNLOAD',
+        readmore:'READ MORE',
         impactHead: "Impact", 
         title1: "STATUS", 
         subtitle1: "Ongoing", 
@@ -1400,7 +1405,7 @@ export const getCaptionForLocale = (locale) => {
             Hovercolors:'',
           },
         ],
-        storyBtn:'View More',
+        storyBtn:'VIEW MORE',
         listData:[
           {
             text : 'PICs more effectively implement UNCAC and work towards the achievement of SDG 16.'
@@ -1516,110 +1521,172 @@ export const statsArray = (locale) => {
 <Meta title="Templates/Project Page"/>
 
 <style>{`
-  .sbdocs-h1 {
-    font-weight: 700;
-  }
-  .subheading {
-    font-weight: 500;
-    font-size: 22px;
-    color: #161616;
-    letter-spacing: 1.5px;
-    line-height: 24px;
-    margin-bottom: 12px;
-    margin-top: 40px;
-  }
-  .high {
-    font-weight: 500;
-    font-size: 14px;
-    color: #161616;
-    line-height: 24px;
-    margin-bottom: 12px;
-    margin-top: 40px;
-  }
-  .docblock-code-toggle {
-    display: none;
-  }
+  .sbdocs-preview {display: none}
 `}</style>
 
 # Project Page 
 
-Project Page Template
+A Project page has the list of projects that the company is dealing with.
 
-<Story name="Project Page">
-  {(args, { globals: { locale } }) => {
-    const caption = getCaptionForLocale(locale);
-    const navigationData= getNavLinks(locale);
-    const leftNavigationData=navigationData.filter(item=>item.position==='left');
-    const rightNavigationData=navigationData.filter(item=>item.position==='right');
-    const siteTitleData = getSiteTitle(locale);
-    const statCaption = statsArray(locale);
-    return <ProjectPage        
-        herodata={caption.herodata} 
-        title={caption.title} 
-        content={caption.content} 
-        active={'default'} 
-        imgsrc={caption.imgsrc} 
-        imgalt={caption.imgalt} 
-        videosrc={caption.videosrc}
-        topHeading={caption.topHeading}
-        topParagraph={caption.topParagraph}
-        topParagraph1={caption.topParagraph1}
-        whatwedoheader={caption.whatwedoheader} 
-        relatedHeading={caption.relatedHeading}
-        whatwedodescription={caption.whatwedodescription}
-        download={caption.download}
-        downloadTitle={caption.downloadTitle}
-        downloadTitle1={caption.downloadTitle1}
-        downloadTitle2={caption.downloadTitle2}
-        downloadTitle3={caption.downloadTitle3}
-        downloadTitle4={caption.downloadTitle4}
-        downloadTitle5={caption.downloadTitle5}
-        downloadTitle6={caption.downloadTitle6}
-        footerData={footerData(locale)}
-        locale={locale}
-        leftNavigationData={leftNavigationData}
-        navigationData={navigationData}
-        rightNavigationData={rightNavigationData}
-        menuData={menuData(locale)}
-        languageswitcherData={Languageswitcher(locale)}
-        locationData={getLocationDataForLocale(locale)}
-        langSelect={getSelectlanguage(locale)}
-        backcaption={getBackForLocale(locale)}
-        siteTitleData={getSiteTitle(locale)}
-        logo={logo}
-        logowhite={logowhite}
-        impactHead={caption.impactHead}
-        title1={caption.title1}
-        title2={caption.title2}
-        title3={caption.title3}
-        title4={caption.title4}
-        title5={caption.title5}
-        title6={caption.title6}
-        title7={caption.title7}
-        subtitle1={caption.subtitle1}
-        subtitle2={caption.subtitle2}
-        subtitle3={caption.subtitle3}
-        subtitle4={caption.subtitle4}
-        subtitle5={caption.subtitle5}
-        subtitle6={caption.subtitle6}
-        subtitle7={caption.subtitle7}
-        buttonProjectInfo={caption.buttonProjectInfo}
-        supportHeading={caption.supportHeading}
-        exploreHeading={caption.exploreHeading}
-        exploreMoreData={caption.contentdata} 
-        exploreMoreBtn={caption.storyBtn}
-        statsliderdata={statCaption}
-        listData={caption.listData}
-    ></ProjectPage>;
-  }}
-</Story>
+### Overview
+A project page has all the projects listed. This helps the user to get all the list of projects at one place.
+Mock Up: https://undp-design-system.azurewebsites.net/project-page
 
-<div className="subheading">Usage</div>
-<ul>
-    <li>Take HTML from the HTML tab in the canvas</li>
-    <u>To use SCSS include the following files in your implementation</u>
-    <li>Include the common SCSS files like breakpoints, variables, mixin from <code>assets/scss</code></li>
-    <li>Component SCSS file: <code>postheader.scss</code></li>
-    <u>To use CSS include the following files in your implementation</u>
-    <li>The compiled CSS file from <code>assets/css/style.css</code></li>
-</ul>
+### Template Structure
+
+The following components are used to create the “Article page” template in the design system
+- Country header
+- Homepage Hero - Homepage Hero images are large-sized images with text in front of the image and present at the top of the homepage.
+- Breadcrumbs - Creates navigation links for the current pathname based on an opinionated configuration object.
+- Title of the project
+- Text 
+- Text with background image
+- Title
+- Group of download modules where the document can be downloaded.
+- Title
+- Project Details - Complete details about the project like status, start date, Project office, contribution amount, donors, Implementing partners.
+- Secondary button with text: “FULL PROJECT INFORMATION
+- Title
+- Grid of content cards with image, without image, with emphasis
+- Secondary button, no arrow
+- Standard footer 
+
+### Performance
+The page performance will be optimized by considering the following:
+- Lazy load
+- Use appropriate media renditions based on the client’s viewpoint.
+- Load common/static elements asynchronously (static navigation, menus, countries list, etc)
+- Optimize assets loading - inline important CSS, defer bulky assets calls, preconnect to required origins, etc)
+- Optimize transitions and animations so above-the-fold elements are always loaded first and available for viewers before the rest of the page is processed
+
+### Usage:
+- Copy HTML from the HTML tab of Canvas and include below listed css and js files.
+- Initialize viewport,  navigation, language switcher, accordion, swiper, animation and parallax effect by calling below mentioned functions.
+- viewport();
+- expandToSize('.pagehero-full');
+- navigationInitialize();
+- langSwitch();
+- accordion('[data-accordion="mobile"]', '.footer-panel', 'active');
+- swiper('.stats-slider');
+- FontResize('.stats-card > h2');
+
+#### CSS and JS References
+
+#### CSS:
+
+Add the base layout style from dist/css/base-minimal.css
+
+- dist/css/components/country-site-header.min.css
+- dist/css/components/language-switcher.min.css
+- dist/css/components/menu.min.css
+- dist/css/components/mega-menu.min.css
+- dist/css/components/mobile-nav.min.css
+- dist/css/components/page-hero.min.css
+- dist/css/components/breadcrumbs.min.css
+- dist/css/components/headingbig.min.css
+- dist/css/components/download-card.min.css
+- dist/css/components/project-detail.min.css
+- dist/css/components/projectdetails.min.css
+- dist/css/components/content-card.min.css
+- dist/css/components/contentcardwithandwithoutimage.min.css
+- dist/css/components/stats-slider.min.css
+- dist/css/components/stats-cards.min.css
+- dist/css/components/stats-card-slider.min.css
+- dist/css/components/cta-link.min.css
+- dist/css/components/footer-logo.min.css
+- dist/css/components/footer-lists.min.css
+- dist/css/components/footer-icons.min.css
+- dist/css/components/footer-condition.min.css
+- dist/css/components/input-group.min.css
+- dist/css/components/buttons.min.css
+- dist/css/components/signup.min.css
+- dist/css/components/accordion.min.css
+- dist/css/components/footer.min.css
+- dist/css/templates/project-page.min.css
+- dist/css/components/swiper.min.css
+
+#### JS:
+- dist/js/navigation.min.js
+- dist/js/UNDP.min.js
+- dist/js/lang_switcher.min.js
+- dist/js/accordion.min.js
+- dist/js/smoothbgchange.min.js
+- dist/js/swiper.min.js
+- dist/js/font_resize.min.js
+- dist/js/viewport.min.js
+
+### Changelog
+1.0 — Released component
+
+<Canvas>
+  <Story name="Project Page">
+    {(args, { globals: { locale } }) => {
+      const caption = getCaptionForLocale(locale);
+      const navigationData= getNavLinks(locale);
+      const leftNavigationData=navigationData.filter(item=>item.position==='left');
+      const rightNavigationData=navigationData.filter(item=>item.position==='right');
+      const siteTitleData = getSiteTitle(locale);
+      const statCaption = statsArray(locale);
+      return <ProjectPage        
+          herodata={caption.herodata} 
+          title={caption.title} 
+          content={caption.content} 
+          active={'default'} 
+          imgsrc={caption.imgsrc} 
+          imgalt={caption.imgalt} 
+          videosrc={caption.videosrc}
+          topHeading={caption.topHeading}
+          topParagraph={caption.topParagraph}
+          topParagraph1={caption.topParagraph1}
+          whatwedoheader={caption.whatwedoheader} 
+          relatedHeading={caption.relatedHeading}
+          whatwedodescription={caption.whatwedodescription}
+          download={caption.download}
+          readmore={caption.readmore}
+          downloadTitle={caption.downloadTitle}
+          downloadTitle1={caption.downloadTitle1}
+          downloadTitle2={caption.downloadTitle2}
+          downloadTitle3={caption.downloadTitle3}
+          downloadTitle4={caption.downloadTitle4}
+          downloadTitle5={caption.downloadTitle5}
+          downloadTitle6={caption.downloadTitle6}
+          footerData={footerData(locale)}
+          locale={locale}
+          leftNavigationData={leftNavigationData}
+          navigationData={navigationData}
+          rightNavigationData={rightNavigationData}
+          menuData={menuData(locale)}
+          languageswitcherData={Languageswitcher(locale)}
+          locationData={getLocationDataForLocale(locale)}
+          langSelect={getSelectlanguage(locale)}
+          backcaption={getBackForLocale(locale)}
+          siteTitleData={getSiteTitle(locale)}
+          logo={logo}
+          logowhite={logowhite}
+          impactHead={caption.impactHead}
+          title1={caption.title1}
+          title2={caption.title2}
+          title3={caption.title3}
+          title4={caption.title4}
+          title5={caption.title5}
+          title6={caption.title6}
+          title7={caption.title7}
+          subtitle1={caption.subtitle1}
+          subtitle2={caption.subtitle2}
+          subtitle3={caption.subtitle3}
+          subtitle4={caption.subtitle4}
+          subtitle5={caption.subtitle5}
+          subtitle6={caption.subtitle6}
+          subtitle7={caption.subtitle7}
+          buttonProjectInfo={caption.buttonProjectInfo}
+          supportHeading={caption.supportHeading}
+          exploreHeading={caption.exploreHeading}
+          exploreMoreData={caption.contentdata} 
+          exploreMoreBtn={caption.storyBtn}
+          statsliderdata={statCaption}
+          listData={caption.listData}
+      ></ProjectPage>;
+    }}
+  </Story>
+</Canvas>
+

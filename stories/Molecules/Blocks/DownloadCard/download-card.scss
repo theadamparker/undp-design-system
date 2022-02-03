@@ -13,20 +13,28 @@ div.download-card {
 
   &:hover {
     div.publication-thumbnail__image {
+      &::after {
+        @include background-image(27.66deg, $color-yellow, transparent 70.49%);
+        opacity: 0.75;
+      }
+
       @each $name, $color in $colors {
         &.#{$name}:after {
-          @include background-image(42deg, #{$color}, transparent 80%);
-
+          @include background-image(27.66deg, #{$color}, transparent 70.49%);
           opacity: 0.75;
         }
       }
     }
 
-  div.card-thumbnail__image {
+    div.card-thumbnail__image {
+      &::before {
+        @include background-image(67.76deg, $color-yellow, transparent 61.11%);
+        opacity: 0.75;
+      }
+
       @each $name, $color in $colors {
         &.#{$name}::before {
-          @include background-image(42deg, #{$color}, transparent 80%);
-
+          @include background-image(67.76deg, #{$color}, transparent 61.11%);
           opacity: 0.75;
         }
       }
@@ -39,27 +47,36 @@ div.download-card {
         @include transform(translate(0, -10px));
       }
     }
+
+    .external-link{
+      &:after {
+        @include transform(translate(5px, -5px));
+      }
+      &:before {
+        @include transform(rotate(-45deg) translate(7px, 0));
+      }
+    }
   }
 
-  .download-card__description {
+  .description {
     background: $color-gray-100;
     padding: $spacing-24;
   }
 
-  .download-card__title {
+  .title {
     @extend %paragragh-font-20;
 
     margin-bottom: $spacing-04;
   }
 
-  .download-card__format {
+  .format {
     @extend %paragragh-font-16;
 
     color: $color-gray-600;
     margin-bottom: $spacing-16;
   }
 
-  .download-card__download {
+  .download {
     @extend %paragragh-font-16;
 
     align-items: center;
@@ -69,31 +86,45 @@ div.download-card {
     letter-spacing: 0.03em;
     text-transform: uppercase;
 
-    .download-icon{
+    .download-icon {
       margin-left: $spacing-12;
+    }
+
+    .external-link{
+      margin-left: $spacing-12;
+      margin-bottom: $spacing-08;
     }
   }
 }
 
 [dir='rtl'] {
   div.download-card {
-    .download-icon {
+    .download-icon,
+    .external-link {
       margin-left: 0;
       margin-right: $spacing-12;
     }
     &:hover {
       div.publication-thumbnail__image {
+        &::after {
+          @include background-image(318deg, $color-yellow, transparent 70.49%);
+        }
+
         @each $name, $color in $colors {
           &.#{$name}:after {
-            @include background-image(318deg, #{$color}, transparent 80%);
+            @include background-image(318deg, #{$color}, transparent 70.49%);
           }
         }
       }
 
       div.card-thumbnail__image  {
+        &::before {
+          @include background-image(297deg, $color-yellow, transparent 61.11%);
+        }
+
         @each $name, $color in $colors {
           &.#{$name}:before {
-            @include background-image(318deg, #{$color}, transparent 80%);
+            @include background-image(297deg, #{$color}, transparent 61.11%);
           }
         }
       }
