@@ -8,7 +8,7 @@
     display: block;
     font-size: $font-size-16;
     line-height: 1.4;
-    margin-bottom: $spacing-12;
+    margin-bottom: $spacing-04;
     text-align: left;
     text-transform: none;
 
@@ -24,7 +24,8 @@
 
     .input-group {
       width: calc(100% - 86px);
-
+      margin-top: 0;
+      
       @include devicebreak(medium) {
         width: calc(100% - 107px);
       }
