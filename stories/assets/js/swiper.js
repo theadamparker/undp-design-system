@@ -1,5 +1,4 @@
 // import Swiper JS
-import Swiper from 'swiper/swiper-bundle';
 import * as utility from './resize';
 import arrowright from '../icons/arrow-right.svg';
 import arrowleft from '../icons/arrow-left.svg';
@@ -12,7 +11,7 @@ export const swiper = (selector, arrowsSelector, options) => {
   'use strict';
 
   // Get Swiper Selector.
-  let swiperSelector = $(selector);
+  let $swiperSelector = $(selector);
   let dragsize = 'auto';
 
   // data-swiper-device="mobile" // will work only on mobile
@@ -35,7 +34,7 @@ export const swiper = (selector, arrowsSelector, options) => {
   };
 
   // Incase of multiple swiper sliders.
-  swiperSelector.each((index, element) => {
+  $swiperSelector.each((index, element) => {
     // Add class based on index incase of multiple sliders.
     $(element).addClass(`swiper-slider-${index}`);
 
